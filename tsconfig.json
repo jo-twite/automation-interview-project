@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
+    "types": ["node"],
+    "declarationMap": true,
+    "declaration": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "composite": true,
+    "isolatedModules": true,
+    "rewriteRelativeImportExtensions": true,
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "outDir": "./esm",
+    "tsBuildInfoFile": "./tsconfig.esm.build.tsbuildinfo",
+    "noUnusedLocals": false,
+    "noUncheckedIndexedAccess": false,
+    "verbatimModuleSyntax": false
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.d.ts"],
+  "exclude": ["node_modules", "esm"]
+}

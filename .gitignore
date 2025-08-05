@@ -1,0 +1,26 @@
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Env config
+.vscode/settings.json
+
+# Builds
+esm
+
+# Dependencies
+node_modules
+
+# typescript
+*.tsbuildinfo
+cache
+
+#DS_Store
+.DS_Store
+
+#vitest
+tsconfig.vitest-temp.json

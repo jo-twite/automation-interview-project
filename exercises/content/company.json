@@ -1,0 +1,226 @@
+{
+  "name": "QC Tech",
+  "description": "QC Tech is a leading technology company specializing in software testing and automation solutions.",
+  "employees": [
+    {
+      "id": 1,
+      "first name": "Johnson",
+      "last name": "Jackson",
+      "job title": "CTO",
+      "email": "jonhsonjackson@qctech.com",
+      "phone": "+1-555-0000",
+      "isManager": true,
+      "subordinateIds": [2, 3]
+    },
+    {
+      "id": 2,
+      "first name": "Charlton",
+      "last name": "Jackson",
+      "job title": "Architect",
+      "email": "charltonjackson@qctech.com",
+      "phone": "+1-555-1111",
+      "isManager": true,
+      "subordinateIds": [4]
+    },
+    {
+      "id": 4,
+      "first name": "Jane",
+      "last name": "Jackson",
+      "job title": "Main analyst",
+      "email": "janeejackson@qctech.com",
+      "phone": "+1-555-3333",
+      "isManager": true,
+      "subordinateIds": [67, 89, 76, 91, 62, 81, 74, 58, 93, 65]
+    },
+    {
+      "id": 3,
+      "first name": "Liam",
+      "last name": "Wesson",
+      "job title": "Tech lead",
+      "email": "liamwession@qctech.com",
+      "phone": "+1-555-6666",
+      "isManager": true,
+      "subordinateIds": [45, 32, 54, 23, 38, 47, 29, 36, 41, 18]
+    },
+    {
+      "id": 45,
+      "first name": "John",
+      "last name": "Doe",
+      "job title": "Software engineer",
+      "email": "johndoe@qctech.com",
+      "phone": "+1-555-1234",
+      "isManager": false
+    },
+    {
+      "id": 67,
+      "first name": "Jane",
+      "last name": "Smith",
+      "job title": "Analyst",
+      "email": "janesmith@qctech.com",
+      "phone": "+1-555-5678",
+      "isManager": false
+    },
+    {
+      "id": 32,
+      "first name": "Alice",
+      "last name": "Johnson",
+      "job title": "Software engineer",
+      "email": "alicejohnson@qctech.com",
+      "phone": "+1-555-2345",
+      "isManager": false
+    },
+    {
+      "id": 89,
+      "first name": "Bob",
+      "last name": "Brown",
+      "job title": "Analyst",
+      "email": "bobbrown@qctech.com",
+      "phone": "+1-555-6789",
+      "isManager": false
+    },
+    {
+      "id": 54,
+      "first name": "Charlie",
+      "last name": "Davis",
+      "job title": "Software engineer",
+      "email": "charliedavis@qctech.com",
+      "phone": "+1-555-3456",
+      "isManager": false
+    },
+    {
+      "id": 76,
+      "first name": "Emily",
+      "last name": "Wilson",
+      "job title": "Analyst",
+      "email": "emilywilson@qctech.com",
+      "phone": "+1-555-7890",
+      "isManager": false
+    },
+    {
+      "id": 23,
+      "first name": "Frank",
+      "last name": "Taylor",
+      "job title": "Software engineer",
+      "email": "franktaylor@qctech.com",
+      "phone": "+1-555-4567",
+      "isManager": false
+    },
+    {
+      "id": 91,
+      "first name": "Grace",
+      "last name": "Anderson",
+      "job title": "Analyst",
+      "email": "graceanderson@qctech.com",
+      "phone": "+1-555-8901",
+      "isManager": false
+    },
+    {
+      "id": 38,
+      "first name": "Henry",
+      "last name": "Thomas",
+      "job title": "Software engineer",
+      "email": "henrythomas@qctech.com",
+      "phone": "+1-555-5670",
+      "isManager": false
+    },
+    {
+      "id": 62,
+      "first name": "Ivy",
+      "last name": "Moore",
+      "job title": "Analyst",
+      "email": "ivymoore@qctech.com",
+      "phone": "+1-555-6781",
+      "isManager": false
+    },
+    {
+      "id": 47,
+      "first name": "Jack",
+      "last name": "Martin",
+      "job title": "Software engineer",
+      "email": "jackmartin@qctech.com",
+      "phone": "+1-555-2346",
+      "isManager": false
+    },
+    {
+      "id": 81,
+      "first name": "Karen",
+      "last name": "Lee",
+      "job title": "Analyst",
+      "email": "karenlee@qctech.com",
+      "phone": "+1-555-7892",
+      "isManager": false
+    },
+    {
+      "id": 29,
+      "first name": "Leo",
+      "last name": "Harris",
+      "job title": "Software engineer",
+      "email": "leoharris@qctech.com",
+      "phone": "+1-555-3457",
+      "isManager": false
+    },
+    {
+      "id": 74,
+      "first name": "Mia",
+      "last name": "Clark",
+      "job title": "Analyst",
+      "email": "miaclark@qctech.com",
+      "phone": "+1-555-8903",
+      "isManager": false
+    },
+    {
+      "id": 36,
+      "first name": "Nathan",
+      "last name": "Lewis",
+      "job title": "Software engineer",
+      "email": "nathanlewis@qctech.com",
+      "phone": "+1-555-4568",
+      "isManager": false
+    },
+    {
+      "id": 58,
+      "first name": "Olivia",
+      "last name": "Walker",
+      "job title": "Analyst",
+      "email": "oliviawalker@qctech.com",
+      "phone": "+1-555-6783",
+      "isManager": false
+    },
+    {
+      "id": 41,
+      "first name": "Paul",
+      "last name": "Hall",
+      "job title": "Software engineer",
+      "email": "paulhall@qctech.com",
+      "phone": "+1-555-2348",
+      "isManager": false
+    },
+    {
+      "id": 93,
+      "first name": "Quinn",
+      "last name": "Allen",
+      "job title": "Analyst",
+      "email": "quinnallen@qctech.com",
+      "phone": "+1-555-7894",
+      "isManager": false
+    },
+    {
+      "id": 18,
+      "first name": "Rachel",
+      "last name": "Young",
+      "job title": "Software engineer",
+      "email": "rachelyoung@qctech.com",
+      "phone": "+1-555-3459",
+      "isManager": false
+    },
+    {
+      "id": 65,
+      "first name": "Sam",
+      "last name": "King",
+      "job title": "Analyst",
+      "email": "samking@qctech.com",
+      "phone": "+1-555-8905",
+      "isManager": false
+    }
+  ]
+}

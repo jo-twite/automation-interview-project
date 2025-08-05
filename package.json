@@ -1,0 +1,58 @@
+{
+  "name": "qc-interview-project",
+  "description": "QC interview project repository",
+  "main": "index.js",
+  "private": true,
+  "author": "QC",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/QC-Gaming1/automation-interview-project.git"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b tsconfig.json",
+    "build:eslint": "yarn eslint -c ./eslint.config.mjs src && tsc -b tsconfig.json",
+    "clean:build": "rimraf -g \"esm\" ./tsconfig.esm.build.tsbuildinfo",
+    "ex:all": "vitest typecheck --config vite.config.exercises.ts --run ./exercises/exercise*.ts",
+    "ex:eslint": "yarn eslint -c ./eslint.config.mjs ./exercises/*.ts && vitest typecheck --config vite.config.exercises.ts --run ./exercises/exercise*.ts",
+    "ex1": "vitest typecheck --config vite.config.exercises.ts --run ./exercises/exercise1.ts",
+    "ex2": "vitest typecheck --config vite.config.exercises.ts --run ./exercises/exercise2.ts",
+    "ex3": "vitest typecheck --config vite.config.exercises.ts --run ./exercises/exercise3.ts",
+    "ex:watch": "vitest typecheck --config vite.config.exercises.ts ./exercises/exercise*.ts",
+    "ex4": "cucumber-js src/features/exercise4.feature -c esm/testRunnerController/cucumber.js",
+    "test:ex": "vitest typecheck --config vite.config.exercises.ts --run ./exercises/**/*.test.ts",
+    "test": "vitest typecheck --config vite.config.ts --run ./src/**/*.test.ts",
+    "format": "prettier -c .prettierrc.mjs --cache --write \"./**/*.ts\"  --ignore-path .prettierignore"
+  },
+  "packageManager": "yarn@4.1.0",
+  "devDependencies": {
+    "@eslint/compat": "^1.2.9",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.27.0",
+    "@types/node": "^20.11.7",
+    "@typescript-eslint/eslint-plugin": "8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "eslint": "9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-formatter-compact": "^8.40.0",
+    "eslint-import-resolver-typescript": "^4.3.5",
+    "eslint-plugin-import": "2.31.0",
+    "globals": "^16.1.0",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.1.4"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^9.6.0",
+    "@cucumber/cucumber-expressions": "^18.0.1",
+    "@cucumber/messages": "^27.2.0",
+    "@cucumber/pretty-formatter": "1.0.1",
+    "@playwright/test": "^1.52.0",
+    "playwright": "^1.52.0"
+  }
+}
