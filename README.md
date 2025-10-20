@@ -82,6 +82,12 @@ yarn ex4
 
 It should briefly open a **chromium** window and in the terminal you should have the information about 1 test passing.
 
+⚠️ If you don't have the same playwright version as the one of the project, you'll be asked to install it with the command:
+
+```bash
+yarn playwright install
+```
+
 ### Recommended extensions
 
 Here is a list of recommended **VS code extension** you should install:

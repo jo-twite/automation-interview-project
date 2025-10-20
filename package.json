@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.gaming1.net/qc/qc-interview-project.git"
+    "url": "https://github.com/QC-Gaming1/automation-interview-project.git"
   },
   "type": "module",
   "scripts": {
