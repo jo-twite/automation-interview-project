@@ -30,8 +30,9 @@
     - [Use typescript for configuration](#use-typescript-for-configuration)
     - [Code reusability](#code-reusability)
     - [Import and export convention](#import-and-export-convention)
-      - [Export](#export)
-      - [Import](#import)
+      - [Detailed call](#detailed-call)
+      - [Importing and exporting types](#importing-and-exporting-types)
+      - [Barrel files](#barrel-files)
   - [About using AI to generate code](#about-using-ai-to-generate-code)
 
 ---
@@ -80,12 +81,6 @@ yarn ex4
 ```
 
 It should briefly open a **chromium** window and in the terminal you should have the information about 1 test passing.
-
-⚠️ If you don't have the same playwright version as the one of the project, you'll be asked to install it with the command:
-
-```bash
-yarn playwright install
-```
 
 ### Recommended extensions
 
@@ -347,7 +342,6 @@ Don't forget to also type the return of your function (not for steps function).
 - Boolean parameters must be named starting with one of the following verbs: `is`, `has`, `can`, `was`, `contains`, `should`, `does`. These verbs should reflect the action or state influenced by the parameter's value.
 
   E.g.:
-
   - If your boolean indicate if an element should be displayed or not, it could be named : `isDisplayed`
   - If your boolean indicate that an element has some children or not, it could be named: `hasChildren`
 
@@ -509,56 +503,71 @@ import * as date from './date.ts';
 import utils as utilsTypes from '../types/index.ts';
 ```
 
-#### Export
+#### Detailed call
 
-In order to avoid a mess in the exports, they should be organized with barrel files and by level.
+To improve the [tree-shaking](https://webpack.js.org/guides/tree-shaking/) and avoid issue linked to circular dependency, detailed calls for import and export are to be favoured.
 
-A barrel file is used to centralize all exports from a folder. It imports the exported content of each file and exports it in an object. You should have one barrel file per folder you want to export. And then having a barrel file to export all barrel files.
-The barrel files should be named **index.ts**.
-
-E.g:
+Inside a package every element should be imported and exported individually from it's origin file.
 
 ```typescript
-export * as date from './date.ts';
-export * as requestHandler from './requestHandler.ts';
-export * as types from './types/index.ts';
-export * as utils from './utils.ts';
+import { function1, function2 } from './helpers/helper1.ts';
+
+import { CONFIG1 } from '../configurations/config.ts';
 ```
 
-The export is a bit different for type as you need to export them
-with the **type** keyword.
-
-E.g.:
+For import from another package it will look like this:
 
 ```typescript
-export type * as exercise from './exercise.ts';
+import { type Type1, CONFIG1, helper1 } from '@repo/package';
 ```
 
-⚠️ Note that if you need to export non type value from a type file (such as values which are used to build union type but can also be used somewhere else), you need to import them and then export them in a `typeValues` object ⚠️:
+#### Importing and exporting types
+
+When you want to import or export types, there is an additional rule to apply: you have to use the keyword **type**. For the export this rule is enforced by the **tsconfig's isolatedModules**. For import it's the **eslint's @typescript-eslint/consistent-type-imports** rule which handle it.
 
 ```typescript
-export type * as exercise from './exercise.ts';
-import { exercisesValue } from './exercise.ts';
+// Imports
+import type { Type1, Type2 } from './type.ts';
+import { type Type3, config } from './configType.ts';
 
-export const typeValues = {
-  exercisesValue,
+// Exports
+export type { Type1, Type2 } from './type.ts';
+export { type Type3, CONFIG } from './configType.ts';
+```
+
+#### Barrel files
+
+With detailed import used inside the package, no barrel file is needed. In fact you should only **one** file per package to be used as a barrel file which is the **main index.ts** file. This file should **centralize** all the exports from the package to the outside. **Configurations** and **types** should still be exported as detailed elements but **functions from helpers** should be group under **an object per helper**.
+
+```typescript
+export type { RemoveWhitespacesMode } from './types/common.ts';
+export type { EmailPart, EmailParts } from './types/email.ts';
+
+export {
+  PATH_PARAMETER_IDENTIFIER,
+  REQUEST_GROUP_INFORMATION,
+  STATUS_CODE_VALUE,
+  REQUEST_STATUS,
+  REQUEST_TYPES,
+} from './configurations/request.ts';
+
+export {
+  UNSERIALIZABLE_DATA_PLACEHOLDER,
+  CHARACTER_TYPE_STRINGS,
+} from './configurations/string.ts';
+
+export * as array from './helpers/array.ts';
+export * as email from './helpers/email.ts';
+export * as number from './helpers/number.ts';
+```
+
+If not all element from an helper should be exported, then you'll first need to import the content to export and then export them wrapped in an object:
+
+```typescript
+import { getGeneratedString } from './helpers/stringGenerator.ts';
+export const stringGenerator = {
+  getGeneratedString,
 };
-```
-
-#### Import
-
-When importing files there is some rules to follow:
-
-- If the file is in the same folder then you can directly import it:
-
-```typescript
-import * as date from './date.ts';
-```
-
-- If the file is from another folder you have to import it through its index file:
-
-```typescript
-import date as dateHelpers from '../helpers/index.ts';
 ```
 
 ## About using AI to generate code

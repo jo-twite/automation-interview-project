@@ -1,6 +1,6 @@
 // /!\ Do not modify this file /!\
 
-import { LaunchOptions } from '@playwright/test';
+import type { LaunchOptions } from '@playwright/test';
 const browserOptions: LaunchOptions = {
   headless: false,
   slowMo: 0,

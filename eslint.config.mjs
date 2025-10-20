@@ -67,6 +67,10 @@ const commonConfig = [
     },
 
     rules: {
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        { prefer: 'type-imports' },
+      ],
       '@typescript-eslint/ban-ts-comment': 0,
       'linebreak-style': 0,
       curly: [2, 'all'],

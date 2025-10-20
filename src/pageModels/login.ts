@@ -1,8 +1,8 @@
-import { Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 
-import { login as loginTypes } from '../types/index.ts';
+import type { LoginField } from '../types/login.ts';
 
-export const createPage = (page: Page) => {
+export const createLoginPage = (page: Page) => {
   const locators = {
     loginForm: {
       inputs: {
@@ -15,7 +15,7 @@ export const createPage = (page: Page) => {
     },
   };
   const helpers = {
-    fillLoginField: async (field: loginTypes.LoginField, value: string) => {
+    fillLoginField: async (field: LoginField, value: string) => {
       await locators.loginForm.inputs[field].fill(value);
     },
     submitLoginForm: async () => {

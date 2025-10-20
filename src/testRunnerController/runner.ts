@@ -1,8 +1,12 @@
 // /!\ Do not modify this file /!\
 
-import { IWorldOptions, setWorldConstructor, World } from '@cucumber/cucumber';
-import * as messages from '@cucumber/messages';
 import {
+  type IWorldOptions,
+  setWorldConstructor,
+  World,
+} from '@cucumber/cucumber';
+import type { Pickle } from '@cucumber/messages';
+import type {
   APIRequestContext,
   BrowserContext,
   Page,
@@ -15,7 +19,7 @@ export interface CucumberWorldConstructorParams {
 
 export interface ITestController extends World {
   debug: boolean;
-  feature?: messages.Pickle;
+  feature?: Pickle;
   context?: BrowserContext;
   page?: Page;
 

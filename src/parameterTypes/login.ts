@@ -1,10 +1,10 @@
 import { defineParameterType } from '@cucumber/cucumber';
 
-import { login as loginTypes, typeValues } from '../types/index.ts';
+import { type LoginField, loginFields } from '../types/login.ts';
 
-defineParameterType({
-  name: 'loginField',
-  regexp: typeValues.loginFields,
-  transformer: (loginField): loginTypes.LoginField =>
-    loginField as loginTypes.LoginField,
-});
+export const loginField = () =>
+  defineParameterType({
+    name: 'loginField',
+    regexp: loginFields,
+    transformer: (loginField): LoginField => loginField as LoginField,
+  });

@@ -5,13 +5,17 @@ import {
   AfterAll,
   Before,
   BeforeAll,
-  ITestCaseHookParameter,
+  type ITestCaseHookParameter,
   setDefaultTimeout,
 } from '@cucumber/cucumber';
-import { chromium, ChromiumBrowser, ConsoleMessage } from '@playwright/test';
+import {
+  chromium,
+  type ChromiumBrowser,
+  type ConsoleMessage,
+} from '@playwright/test';
 
 import { config } from './playwright.ts';
-import { getContext, getPage, ITestController } from './runner.ts';
+import { getContext, getPage, type ITestController } from './runner.ts';
 
 let browser: ChromiumBrowser;
 

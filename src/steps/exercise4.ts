@@ -1,16 +1,21 @@
 import { Given, Then, When } from '@cucumber/cucumber';
 
-import { website as websiteConfiguration } from '../configurations/index.ts';
-import { createPage } from '../pageModels/index.js';
-import { getPage, ITestController } from '../testRunnerController/index.ts';
-import { login as loginTypes } from '../types/index.ts';
-import '../parameterTypes/index.ts';
+import { MAIN_URL } from '../configurations/website.ts';
+import { createLoginPage } from '../pageModels/login.ts';
+import { loginField } from '../parameterTypes/login.ts';
+import {
+  getPage,
+  type ITestController,
+} from '../testRunnerController/index.ts';
+import type { LoginField } from '../types/login.ts';
+
+loginField();
 
 Given(
   'the website is loaded',
   async function (this: ITestController): Promise<void> {
     const page = getPage(this);
-    await page.goto(websiteConfiguration.MAIN_URL);
+    await page.goto(MAIN_URL);
   },
 );
 
@@ -18,11 +23,11 @@ When(
   'the user fills the {loginField} field with {string}',
   async function (
     this: ITestController,
-    loginField: loginTypes.LoginField,
+    loginField: LoginField,
     fieldValue: string,
   ): Promise<void> {
     const page = getPage(this);
-    const loginPage = createPage.login(page);
+    const loginPage = createLoginPage(page);
     // TODO: Implement the field filling logic.
   },
 );
