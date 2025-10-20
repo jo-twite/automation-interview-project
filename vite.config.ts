@@ -4,11 +4,11 @@ export default defineConfig({
   test: {
     environment: 'node',
     globals: true,
-    include: ['./src/**/*.test.ts'],
+    include: ['./src/**/*.spec.ts'],
     exclude: ['./esm', './exercises'],
     passWithNoTests: true,
     typecheck: {
-      include: ['./src/**/*.test.ts'],
+      include: ['./src/**/*.spec.ts'],
       exclude: ['./esm', './exercises'],
       enabled: true,
     },

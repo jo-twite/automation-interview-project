@@ -21,8 +21,8 @@
     "ex3": "vitest typecheck --config vite.config.exercises.ts --run ./exercises/exercise3.ts",
     "ex:watch": "vitest typecheck --config vite.config.exercises.ts ./exercises/exercise*.ts",
     "ex4": "cucumber-js src/features/exercise4.feature -c esm/testRunnerController/cucumber.js",
-    "test:ex": "vitest typecheck --config vite.config.exercises.ts --run ./exercises/**/*.test.ts",
-    "test": "vitest typecheck --config vite.config.ts --run ./src/**/*.test.ts",
+    "test:ex": "vitest typecheck --config vite.config.exercises.ts --run ./exercises/**/*.spec.ts",
+    "test": "vitest typecheck --config vite.config.ts --run ./src/**/*.spec.ts",
     "format": "prettier -c .prettierrc.mjs --cache --write \"./**/*.ts\"  --ignore-path .prettierignore"
   },
   "packageManager": "yarn@4.10.2",

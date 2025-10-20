@@ -378,7 +378,7 @@ Be explicit in your documentation and don't hesitate to give details.
 
 ### Add unit tests for all helper functions
 
-Each helper function should have some unit tests to cover it's behavior. Unit tests should be use in a file with the same name as the one they are testing with an additional `.test`. So for `exercise.ts` the unit test file should be `exercise.test.ts`.
+Each helper function should have some unit tests to cover it's behavior. Unit tests should be use in a file with the same name as the one they are testing with an additional `.spec`. So for `exercise.ts` the unit test file should be `exercise.spec.ts`.
 
 ⚠️ As this repository is divided into two parts, there is two command to launch the unit tests ⚠️:
 
