@@ -1,8 +1,9 @@
 import { describe, expect, test } from 'vitest';
 
-import {employees as employeeList} from './content/company.json';
-import {mapRawEmployees} from './helpers.ts';
-import type { CompanyInfo, EmployeeInformation as EmployeeInfo, RawEmployee } from './types.spec.ts';
+import {employees as employeeList, name as companyName} from './content/company.json';
+import {findEmployeeByTitle, fullName} from './helpers.ts';
+import type { CompanyInfo, RawEmployee, JobDescription } from './types.spec.ts';
+
 
 describe('Exercise 2', () => {
   // This second exercise will focus on using the content from the object in company.json file.
@@ -25,9 +26,56 @@ describe('Exercise 2', () => {
 
     type CompanyInformation = CompanyInfo;
 
-    const employees: RawEmployee = employeeList;
 
-    const company: CompanyInformation = mapToCompanyInfo(employees);
+    const employees: RawEmployee[] = employeeList;  
+
+    const company: CompanyInformation = {
+      name: companyName,
+      employees: {
+        cto: "",
+        devTeam: {
+          architect: "",
+          techLead: "", 
+          developers: []
+        },
+        analysisTeam: {
+          mainAnalyst: "",
+          analysts: []
+        }
+      }};
+
+
+    const CTO = findEmployeeByTitle(employees, "CTO");
+    if(CTO) {
+      company.employees.cto = fullName(CTO);
+    }
+    
+    const companyArchitect = findEmployeeByTitle(employees, "Architect");
+    if(companyArchitect) { 
+      company.employees.devTeam.architect = fullName(companyArchitect);
+    }
+
+    const companyTechLead = findEmployeeByTitle(employees, "Tech lead");
+    if(companyTechLead) { 
+      company.employees.devTeam.techLead = fullName(companyTechLead);
+    }
+
+    const mainAnalyst = findEmployeeByTitle(employees, "Main analyst");
+    if(mainAnalyst) { 
+      company.employees.devTeam.techLead = fullName(mainAnalyst);
+    }
+
+    const allDevs = employees
+    .filter(e => e['job title'] == "Software engineer")
+    .map(e => fullName(e));
+
+    company.employees.devTeam.developers = allDevs;
+
+    const allAnalysts = employees
+    .filter(e => e['job title'] == "Analyst")
+    .map(e => fullName(e));
+    company.employees.analysisTeam.analysts = allAnalysts;
+
 
     expect(company.employees.cto).toEqual('Johnson Jackson');
     expect(company.employees.devTeam.techLead).toEqual('Liam Wesson');
@@ -44,10 +92,23 @@ describe('Exercise 2', () => {
     //    - main analyst: "Leads the analysis team"
     //    - analyst: "Analyzes the software needs
 
-    const employees = [];
+    const employees = employeeList;
 
-    const getJobDescription = (jobTitle: string): string => '';
-    const getEmployeeJobDescription = (id: number): string => '';
+    const jobDesc = {
+      'CTO': "Manages the company",
+       'Architect': "Designs the architecture of the software",
+       'Tech lead': "Leads the dev team",
+       'Software engineer': "Develops the software",
+       'Main analyst': "Leads the analysis team",
+       'Analyst': "Analyzes the software needs"
+    }
+    
+    const getJobDescription = (jobTitle: string): string => jobDesc[jobTitle as keyof typeof jobDesc] ?? '';
+    
+    const getEmployeeJobDescription = (id: number): string => {
+      const employee = employees.find(e => e.id === id);
+      return employee ? getJobDescription(employee['job title']) : '';
+  };
 
     expect(getJobDescription('CTO')).toEqual('Manages the company');
     expect(getJobDescription('Architect')).toEqual(

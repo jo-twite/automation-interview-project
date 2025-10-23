@@ -14,15 +14,30 @@ Feature: Exercise 4
 
 # Task 8.b: Modify this test and the steps to be used for the login of both standard and locked out user (all credentials can be found o the website login page).
 # Hint: Look for Scenario Outline in the cucumber documentation.
-  Scenario: a valid user logs in
-    When the user fills the username field with "standard_user"
-    And the user fills the password field with "secret_sauce"
+  Scenario Outline: user login variants
+    When the user fills the username field with "<username>"
+    And the user fills the password field with "<password>"
     And the user clicks the login button
-    Then the user should be redirected to the home page
+    Then <outcome>
+
+    Examples:
+      | username        | password      | outcome                                                   |
+      | standard_user   | secret_sauce  | the user should be redirected to the home page            |
+      | unknown_user    | secret_sauce  | the login should be locked out with an error message      |
+      
+
 
 # Task 9: Implement a new test case in which:
 # - The user logs in (should be a single prerequisite step)
 # - Add an item to their cart
 # - The remove from cart button is displayed
+  Scenario: add item shows Remove button
+    Given the user is logged in as "standard_user" with password "secret_sauce"
+    When the user adds "Sauce Labs Backpack" to the cart
+    Then the Remove button for "Sauce Labs Backpack" is displayed
 
 # Task 10: Implement a new test case to check all the buying behavior from the login of the user to the confirmation of the order.
+  Scenario: complete purchase flow
+    Given the user is logged in as "standard_user" with password "secret_sauce"
+    When the user completes a purchase of "Sauce Labs Backpack"
+    Then the order confirmation is shown

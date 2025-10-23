@@ -30,7 +30,7 @@ export type RawEmployee = {
 export type CompanyInfo = {
       name: string,
       employees: {
-        CTO: string,
+        cto: string,
         devTeam: {
           architect: string,
           techLead: string,
@@ -43,4 +43,14 @@ export type CompanyInfo = {
       }
     };
 
+    export type JobDescription = {
+      'cto': "Manages the company"
+       'architect': "Designs the architecture of the software"
+       'tech lead': "Leads the dev team"
+       'software engineer': "Develops the software"
+       'main analyst': "Leads the analysis team"
+       'analyst': "Analyzes the software needs"
+    }
+
     
+   
