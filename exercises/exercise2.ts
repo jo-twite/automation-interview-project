@@ -1,5 +1,9 @@
 import { describe, expect, test } from 'vitest';
 
+import {employees as employeeList} from './content/company.json';
+import {mapRawEmployees} from './helpers.ts';
+import type { CompanyInfo, EmployeeInformation as EmployeeInfo, RawEmployee } from './types.spec.ts';
+
 describe('Exercise 2', () => {
   // This second exercise will focus on using the content from the object in company.json file.
   // Like the first one, each test represent an task to implement.
@@ -19,11 +23,11 @@ describe('Exercise 2', () => {
     //     - main analyst: Main analyst name
     //     - analysts: An array of analyst names
 
-    type CompanyInformation = object;
+    type CompanyInformation = CompanyInfo;
 
-    const employees = [];
+    const employees: RawEmployee = employeeList;
 
-    const company: CompanyInformation = {};
+    const company: CompanyInformation = mapToCompanyInfo(employees);
 
     expect(company.employees.cto).toEqual('Johnson Jackson');
     expect(company.employees.devTeam.techLead).toEqual('Liam Wesson');
